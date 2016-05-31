@@ -1,0 +1,10 @@
+make: *** No rule to make target `distclean'.  Stop.
+configure: WARNING: if you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used
+checking for arm-linux-androideabi-gcc... /tmp/chain/bin/arm-linux-androideabi-gcc
+checking whether the C compiler works... no
+configure: error: in `/opt/StudioProjects/Luabot/src/main/openssh-portable':
+configure: error: C compiler cannot create executables
+See `config.log' for more details
+-rw-rw-r-- 1 aaron aaron   496 May 31 01:56 build.log
+-rw-rw-r-- 1 aaron aaron 22325 May 31 01:56 build.log.bak

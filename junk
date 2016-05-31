@@ -1,0 +1,4 @@
+// ==={ADP}==================================================
+unsigned int arc4random();
+unsigned int arc4random_uniform(unsigned int upper_bound);
+// ==========================================================

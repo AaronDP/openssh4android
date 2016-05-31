@@ -1,0 +1,22 @@
+--- configure.ac	2013-04-03 20:14:57 +0000
++++ configure.ac	2013-04-03 22:14:13 +0000
+@@ -3346,6 +3351,19 @@
+ 		[Fields in struct sockaddr_storage])
+ fi
+ 
++AC_CACHE_CHECK([for pw_gecos field in struct passwd],
++		ac_cv_have_pw_gecos_in_struct_passwd, [
++	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ #include <pwd.h> ]],
++	[[ struct passwd p; p.pw_gecos = 0; ]])],
++	[ ac_cv_have_pw_gecos_in_struct_passwd="yes" ],
++	[ ac_cv_have_pw_gecos_in_struct_passwd="no"
++	])
++])
++if test "x$ac_cv_have_pw_gecos_in_struct_passwd" = "xyes" ; then
++	AC_DEFINE([HAVE_PW_GECOS_IN_PASSWD], [1],
++		[Define if your password has a pg_gecos field])
++fi
++
+ AC_CACHE_CHECK([for pw_class field in struct passwd],
+ 		ac_cv_have_pw_class_in_struct_passwd, [
+ 	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ #include <pwd.h> ]],
