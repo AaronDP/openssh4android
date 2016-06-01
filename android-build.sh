@@ -15,6 +15,7 @@ export CC=${CROSS_PATH}-gcc
 export CXX=${CROSS_PATH}-g++
 #export LD=${CROSS_PATH}-ld
 export LD=${CROSS_PATH}-gcc
+export STRIP=${CROSS_PATH}-strip
 export RANLIB=${CROSS_PATH}-ranlib
 export PREFIX=/data/local/tmp
 export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
@@ -125,6 +126,7 @@ ac_cv_type_socklen_t=yes \
 use_toolchain_hardening=0 \
 use_stack_protector=0 \
 ./configure \
+--disable-strip \
 --with-sandbox=no \
 --without-stackprotect \
 --without-hardening \
@@ -149,7 +151,7 @@ use_stack_protector=0 \
 --with-privsep-path=/data/local/tmp/var/empty \
 --localstatedir=/data/local/tmp/var \
 --host=arm-linux-androideabi \
---with-zlib=/data/local/tmp/lib && make V=1 # && make install
+--with-zlib=/data/local/tmp/lib && make V=1 && make install
 fi
 
 #--with-ssl-dir=/data/local/tmp/ssl \

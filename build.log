@@ -1,4 +1,37 @@
-make: *** No rule to make target `distclean'.  Stop.
+if [ -f regress/Makefile ] && [ -r regress/Makefile ]; then \
+		(cd regress && make clean) \
+	fi
+make[1]: Entering directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/regress'
+for F in *.core actual agent-key.* authorized_keys_aaron authorized_keys_aaron.* authorized_principals_aaron banner.in banner.out cert_host_key* cert_user_key* copy.1 copy.2 data ed25519-agent ed25519-agent* ed25519-agent.pub empty.in expect failed-regress.log failed-ssh.log failed-sshd.log hkr.* host.rsa host.rsa1 host_* host_ca_key* host_krl_* host_revoked_* key.* key.dsa-* key.ecdsa-* key.ed25519-512 key.ed25519-512.pub key.rsa-* keys-command-args kh.* known_hosts known_hosts-cert known_hosts.* krl-* ls.copy modpipe netcat pidfile putty.rsa2 ready regress.log remote_pid revoked-* rsa rsa-agent rsa-agent.pub rsa.pub rsa1 rsa1-agent rsa1-agent.pub rsa1.pub rsa_ssh2_cr.prv rsa_ssh2_crnl.prv scp-ssh-wrapper.exe scp-ssh-wrapper.scp setuid-allowed sftp-server.log sftp-server.sh sftp.log ssh-log-wrapper.sh ssh.log ssh_config ssh_config.* ssh_proxy ssh_proxy_bak ssh_proxy_envpass sshd.log sshd_config sshd_config.orig sshd_proxy sshd_proxy.* sshd_proxy_bak sshd_proxy_orig t10.out t10.out.pub t12.out t12.out.pub t2.out t3.out t6.out1 t6.out2 t7.out t7.out.pub t8.out t8.out.pub t9.out t9.out.pub testdata user_*key* user_ca* user_key*; do rm -f $F; done
+test -z "" ||  rm -f /var/run/testdata_aaron /var/run/keycommand_aaron
+rm -rf .putty
+make[1]: Leaving directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/regress'
+rm -f *.o *.a ssh sshd ssh-add ssh-keygen ssh-keyscan ssh-keysign ssh-pkcs11-helper ssh-agent scp sftp-server sftp logintest config.cache config.log
+rm -f *.out core opensshd.init openssh.xml
+rm -f Makefile buildpkg.sh config.h config.status
+rm -f survey.sh openbsd-compat/regress/Makefile *~ 
+rm -rf autom4te.cache
+rm -f regress/unittests/test_helper/*.a
+rm -f regress/unittests/test_helper/*.o
+rm -f regress/unittests/sshbuf/*.o
+rm -f regress/unittests/sshbuf/test_sshbuf
+rm -f regress/unittests/sshkey/*.o
+rm -f regress/unittests/sshkey/test_sshkey
+rm -f regress/unittests/bitmap/*.o
+rm -f regress/unittests/bitmap/test_bitmap
+rm -f regress/unittests/hostkeys/*.o
+rm -f regress/unittests/hostkeys/test_hostkeys
+rm -f regress/unittests/kex/*.o
+rm -f regress/unittests/kex/test_kex
+rm -f regress/unittests/misc/kexfuzz
+(cd openbsd-compat && make distclean)
+make[1]: Entering directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/openbsd-compat'
+rm -f *.o *.a core 
+rm -f Makefile *~
+make[1]: Leaving directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/openbsd-compat'
+if test -d pkg ; then \
+		rm -fr pkg ; \
+	fi
 configure: WARNING: if you wanted to set the --build type, don't use --host.
     If a cross compiler is detected then cross compile mode will be used
 checking for arm-linux-androideabi-gcc... /tmp/chain/bin/arm-linux-androideabi-gcc
@@ -832,7 +865,7 @@ if test "doc" = "cat"; then \
 		/bin/sed -e 's|/etc/ssh/ssh_config|/data/local/tmp/etc/ssh_config|g' -e 's|/etc/ssh/ssh_known_hosts|/data/local/tmp/etc/ssh_known_hosts|g' -e 's|/etc/ssh/sshd_config|/data/local/tmp/etc/sshd_config|g' -e 's|/usr/libexec|/data/local/tmp/libexec|g' -e 's|/etc/shosts.equiv|/data/local/tmp/etc/shosts.equiv|g' -e 's|/etc/ssh/ssh_host_key|/data/local/tmp/etc/ssh_host_key|g' -e 's|/etc/ssh/ssh_host_ecdsa_key|/data/local/tmp/etc/ssh_host_ecdsa_key|g' -e 's|/etc/ssh/ssh_host_dsa_key|/data/local/tmp/etc/ssh_host_dsa_key|g' -e 's|/etc/ssh/ssh_host_rsa_key|/data/local/tmp/etc/ssh_host_rsa_key|g' -e 's|/etc/ssh/ssh_host_ed25519_key|/data/local/tmp/etc/ssh_host_ed25519_key|g' -e 's|/var/run/sshd.pid|/data/local/tmp/var/sshd.pid|g' -e 's|/etc/moduli|/data/local/tmp/etc/moduli|g' -e 's|/etc/ssh/moduli|/data/local/tmp/etc/moduli|g' -e 's|/etc/ssh/sshrc|/data/local/tmp/etc/sshrc|g' -e 's|/usr/X11R6/bin/xauth|/usr/bin/xauth|g' -e 's|/var/empty|/data/local/tmp/var/empty|g' -e 's|/usr/bin:/bin:/usr/sbin:/sbin|/data/local/tmp/xbin:/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin|g' ${manpage} | /bin/sh ./fixalgorithms /bin/sed  > ssh_config.5.out; \
 	fi
 (cd openbsd-compat && make)
-make[1]: Entering directory `/opt/StudioProjects/Luabot/src/main/openssh-portable/openbsd-compat'
+make[1]: Entering directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/openbsd-compat'
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I.. -I. -I./.. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DHAVE_CONFIG_H -c arc4random.c
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I.. -I. -I./.. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DHAVE_CONFIG_H -c bsd-asprintf.c
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I.. -I. -I./.. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DHAVE_CONFIG_H -c bsd-closefrom.c
@@ -982,7 +1015,7 @@ a - port-solaris.o
 a - port-tun.o
 a - port-uw.o
 /tmp/chain/bin/arm-linux-androideabi-ranlib libopenbsd-compat.a
-make[1]: Leaving directory `/opt/StudioProjects/Luabot/src/main/openssh-portable/openbsd-compat'
+make[1]: Leaving directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/openbsd-compat'
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DSSHDIR=\"/data/local/tmp/etc\" -D_PATH_SSH_PROGRAM=\"/data/local/tmp/xbin/ssh\" -D_PATH_SSH_ASKPASS_DEFAULT=\"/data/local/tmp/libexec/ssh-askpass\" -D_PATH_SFTP_SERVER=\"/data/local/tmp/libexec/sftp-server\" -D_PATH_SSH_KEY_SIGN=\"/data/local/tmp/libexec/ssh-keysign\" -D_PATH_SSH_PKCS11_HELPER=\"/data/local/tmp/libexec/ssh-pkcs11-helper\" -D_PATH_SSH_PIDDIR=\"/data/local/tmp/var\" -D_PATH_PRIVSEP_CHROOT_DIR=\"/data/local/tmp/var/empty\" -DHAVE_CONFIG_H -c ssh_api.c -o ssh_api.o
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DSSHDIR=\"/data/local/tmp/etc\" -D_PATH_SSH_PROGRAM=\"/data/local/tmp/xbin/ssh\" -D_PATH_SSH_ASKPASS_DEFAULT=\"/data/local/tmp/libexec/ssh-askpass\" -D_PATH_SFTP_SERVER=\"/data/local/tmp/libexec/sftp-server\" -D_PATH_SSH_KEY_SIGN=\"/data/local/tmp/libexec/ssh-keysign\" -D_PATH_SSH_PKCS11_HELPER=\"/data/local/tmp/libexec/ssh-pkcs11-helper\" -D_PATH_SSH_PIDDIR=\"/data/local/tmp/var\" -D_PATH_PRIVSEP_CHROOT_DIR=\"/data/local/tmp/var/empty\" -DHAVE_CONFIG_H -c ssherr.c -o ssherr.o
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DSSHDIR=\"/data/local/tmp/etc\" -D_PATH_SSH_PROGRAM=\"/data/local/tmp/xbin/ssh\" -D_PATH_SSH_ASKPASS_DEFAULT=\"/data/local/tmp/libexec/ssh-askpass\" -D_PATH_SFTP_SERVER=\"/data/local/tmp/libexec/sftp-server\" -D_PATH_SSH_KEY_SIGN=\"/data/local/tmp/libexec/ssh-keysign\" -D_PATH_SSH_PKCS11_HELPER=\"/data/local/tmp/libexec/ssh-pkcs11-helper\" -D_PATH_SSH_PIDDIR=\"/data/local/tmp/var\" -D_PATH_PRIVSEP_CHROOT_DIR=\"/data/local/tmp/var/empty\" -DHAVE_CONFIG_H -c sshbuf.c -o sshbuf.o
@@ -1303,5 +1336,47 @@ ssh-agent.c:712:3: warning: implicit declaration of function 'arc4random_buf' [-
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DSSHDIR=\"/data/local/tmp/etc\" -D_PATH_SSH_PROGRAM=\"/data/local/tmp/xbin/ssh\" -D_PATH_SSH_ASKPASS_DEFAULT=\"/data/local/tmp/libexec/ssh-askpass\" -D_PATH_SFTP_SERVER=\"/data/local/tmp/libexec/sftp-server\" -D_PATH_SSH_KEY_SIGN=\"/data/local/tmp/libexec/ssh-keysign\" -D_PATH_SSH_PKCS11_HELPER=\"/data/local/tmp/libexec/ssh-pkcs11-helper\" -D_PATH_SSH_PIDDIR=\"/data/local/tmp/var\" -D_PATH_PRIVSEP_CHROOT_DIR=\"/data/local/tmp/var/empty\" -DHAVE_CONFIG_H -c sftp-client.c -o sftp-client.o
 /tmp/chain/bin/arm-linux-androideabi-gcc -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -D_FORTIFY_SOURCE=2 -fno-builtin-memset  -I. -I. -I/data/local/tmp/lib/include  -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -I/tmp/chain/include -I/opt/ndk/platforms/android-17/arch-arm/usr/include -I./openbsd-compat -I../openbsd-compat -I/opt/bionic/libc/include  -DSSHDIR=\"/data/local/tmp/etc\" -D_PATH_SSH_PROGRAM=\"/data/local/tmp/xbin/ssh\" -D_PATH_SSH_ASKPASS_DEFAULT=\"/data/local/tmp/libexec/ssh-askpass\" -D_PATH_SFTP_SERVER=\"/data/local/tmp/libexec/sftp-server\" -D_PATH_SSH_KEY_SIGN=\"/data/local/tmp/libexec/ssh-keysign\" -D_PATH_SSH_PKCS11_HELPER=\"/data/local/tmp/libexec/ssh-pkcs11-helper\" -D_PATH_SSH_PIDDIR=\"/data/local/tmp/var\" -D_PATH_PRIVSEP_CHROOT_DIR=\"/data/local/tmp/var/empty\" -DHAVE_CONFIG_H -c sftp-glob.c -o sftp-glob.o
 /tmp/chain/bin/arm-linux-androideabi-gcc -o sftp progressmeter.o sftp.o sftp-client.o sftp-common.o sftp-glob.o -L. -Lopenbsd-compat/ -L/data/local/tmp/lib -march=armv7-a -lc -ldl -nostartfiles  -L/opt/ndk/platforms/android-17/arch-arm/usr/lib -L/tmp/chain/lib   -lssh -lopenbsd-compat -lcrypto -lz  
--rw-rw-r-- 1 aaron aaron 306928 May 31 02:06 build.log
--rw-rw-r-- 1 aaron aaron    608 May 31 02:04 build.log.bak
+(cd openbsd-compat && make)
+make[1]: Entering directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/openbsd-compat'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/opt/StudioProjects/Luabot/src/main/tmp/openssh4android/openbsd-compat'
+./mkinstalldirs /data/local/tmp/xbin
+./mkinstalldirs /data/local/tmp/xbin
+./mkinstalldirs /data/local/tmp/share/man
+./mkinstalldirs /data/local/tmp/share/man/man1
+./mkinstalldirs /data/local/tmp/share/man/man5
+./mkinstalldirs /data/local/tmp/share/man/man8
+./mkinstalldirs /data/local/tmp/libexec
+(umask 022 ; ./mkinstalldirs /data/local/tmp/var/empty)
+/usr/bin/install -c -m 0755  ssh /data/local/tmp/xbin/ssh
+/usr/bin/install -c -m 0755  scp /data/local/tmp/xbin/scp
+/usr/bin/install -c -m 0755  ssh-add /data/local/tmp/xbin/ssh-add
+/usr/bin/install -c -m 0755  ssh-agent /data/local/tmp/xbin/ssh-agent
+/usr/bin/install -c -m 0755  ssh-keygen /data/local/tmp/xbin/ssh-keygen
+/usr/bin/install -c -m 0755  ssh-keyscan /data/local/tmp/xbin/ssh-keyscan
+/usr/bin/install -c -m 0755  sshd /data/local/tmp/xbin/sshd
+/usr/bin/install -c -m 4711  ssh-keysign /data/local/tmp/libexec/ssh-keysign
+/usr/bin/install -c -m 0755  ssh-pkcs11-helper /data/local/tmp/libexec/ssh-pkcs11-helper
+/usr/bin/install -c -m 0755  sftp /data/local/tmp/xbin/sftp
+/usr/bin/install -c -m 0755  sftp-server /data/local/tmp/libexec/sftp-server
+/usr/bin/install -c -m 644 ssh.1.out /data/local/tmp/share/man/man1/ssh.1
+/usr/bin/install -c -m 644 scp.1.out /data/local/tmp/share/man/man1/scp.1
+/usr/bin/install -c -m 644 ssh-add.1.out /data/local/tmp/share/man/man1/ssh-add.1
+/usr/bin/install -c -m 644 ssh-agent.1.out /data/local/tmp/share/man/man1/ssh-agent.1
+/usr/bin/install -c -m 644 ssh-keygen.1.out /data/local/tmp/share/man/man1/ssh-keygen.1
+/usr/bin/install -c -m 644 ssh-keyscan.1.out /data/local/tmp/share/man/man1/ssh-keyscan.1
+/usr/bin/install -c -m 644 moduli.5.out /data/local/tmp/share/man/man5/moduli.5
+/usr/bin/install -c -m 644 sshd_config.5.out /data/local/tmp/share/man/man5/sshd_config.5
+/usr/bin/install -c -m 644 ssh_config.5.out /data/local/tmp/share/man/man5/ssh_config.5
+/usr/bin/install -c -m 644 sshd.8.out /data/local/tmp/share/man/man8/sshd.8
+/usr/bin/install -c -m 644 sftp.1.out /data/local/tmp/share/man/man1/sftp.1
+/usr/bin/install -c -m 644 sftp-server.8.out /data/local/tmp/share/man/man8/sftp-server.8
+/usr/bin/install -c -m 644 ssh-keysign.8.out /data/local/tmp/share/man/man8/ssh-keysign.8
+/usr/bin/install -c -m 644 ssh-pkcs11-helper.8.out /data/local/tmp/share/man/man8/ssh-pkcs11-helper.8
+if [ ! -d /data/local/tmp/etc ]; then \
+		./mkinstalldirs /data/local/tmp/etc; \
+	fi
+./ssh-keygen: 1: ./ssh-keygen: Syntax error: word unexpected (expecting ")")
+make: *** [host-key] Error 2
+-rw-rw-r-- 1 aaron aaron 312314 May 31 02:29 build.log
+-rw-rw-r-- 1 aaron aaron 307042 May 31 02:27 build.log.bak

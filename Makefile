@@ -28,7 +28,7 @@ SSH_KEYSIGN=$(libexecdir)/ssh-keysign
 SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
 PRIVSEP_PATH=/data/local/tmp/var/empty
 SSH_PRIVSEP_USER=sshd
-STRIP_OPT=-s
+STRIP_OPT=
 TEST_SHELL=sh
 
 PATHS= -DSSHDIR=\"$(sysconfdir)\" \
